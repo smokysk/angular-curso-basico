@@ -1,0 +1,13 @@
+<input type="text" [(ngModel)]="task">
+<button type="button"
+[disabled]="task == '' || task == null"
+(click)="addTask()">
+  Add Task
+</button>
+
+<div *ngIf="tasks.length">
+  <h1>{{title}}</h1>
+  <div *ngFor="let task of tasks">
+    <div>{{task}}</div>
+  </div>
+</div>
