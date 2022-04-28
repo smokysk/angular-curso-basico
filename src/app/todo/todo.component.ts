@@ -16,7 +16,9 @@ export class TodoComponent implements OnInit {
   public addTask(): void {
     this.tasks.push(this.task);
     this.task = '';
-    console.log(this.tasks);
+  }
+  public removeTask(id: number): void{
+      this.tasks.splice(id, 1)
   }
   public ola_mundo(): void {
     alert(this.title);

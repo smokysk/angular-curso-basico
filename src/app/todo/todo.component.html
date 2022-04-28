@@ -1,15 +1,14 @@
 <input type="text" [(ngModel)]="task">
-<button type="button"
-[disabled]="task == '' || task == null"
-(click)="addTask()">
+
+<button type="button" [disabled]="task == '' || task == null" (click)="addTask()">
   Add Task
 </button>
 
 <div *ngIf="tasks.length">
   <h1>{{title}}</h1>
-  <div *ngFor="let task of tasks">
-    <div>{{task}}</div>
+  <div *ngFor="let task of tasks; let indice = index">
+    <div>{{task}} - {{indice + 1}}
+      <button (click)="removeTask(indice)">delete</button>
+    </div>
   </div>
 </div>
-
-
