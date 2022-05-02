@@ -1,0 +1,8 @@
+<h2>criar novo estado</h2>
+<label>Name</label>
+<input type="text" [(ngModel)]="state.name">
+<input type="text" [(ngModel)]="state.abbreviation">
+<div>
+  <button (click)="navigate('state', route)" >voltar</button>
+  <button (click)="createState()" >salvar</button>
+</div>

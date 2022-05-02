@@ -1,0 +1,14 @@
+<table style="width:100%">
+  <tr>
+    <th>id</th>
+    <th>name</th>
+    <th>zone</th>
+    <th>city</th>
+  </tr>
+  <tr *ngFor="let district of districts">
+    <td>{{district.id}}</td>
+    <td>{{district.name}}</td>
+    <td>{{district.zone_name}}</td>
+    <td>{{district.city_name}}</td>
+  </tr>
+</table>

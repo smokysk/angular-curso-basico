@@ -12,6 +12,7 @@ export class CurriculumComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    alert('nasceu o curriculo')
   }
 
 }
