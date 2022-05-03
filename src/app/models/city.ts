@@ -4,5 +4,5 @@ export class City {
   id!: number;
   name!: string;
   state!: number | State;
-  state_name!: string
+  state_name!: string;
 }

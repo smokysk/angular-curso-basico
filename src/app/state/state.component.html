@@ -7,6 +7,7 @@
     <th>name</th>
     <th>abbreviation</th>
     <th>Delete</th>
+    <th>Update</th>
   </tr>
   <tr *ngFor="let state of states">
     <td>{{state.id}}</td>
@@ -14,7 +15,12 @@
     <td>{{state.abbreviation}}</td>
     <td>
       <button (click)="deleteState(state.id)">
-        delete
+        Delete
+      </button>
+    </td>
+    <td>
+      <button (click)="Edit(state.id)">
+        Update
       </button>
     </td>
   </tr>

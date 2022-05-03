@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { ActivatedRoute, Params, Router } from '@angular/router';
+import { map, Subject, takeUntil } from 'rxjs';
 import { State } from 'src/app/models/state';
 import { StateService } from 'src/app/service/state.service';
 import { Utils } from 'src/app/utils/utils';
@@ -14,11 +14,15 @@ export class StateItemComponent implements OnInit, OnDestroy {
   public state = new State;
   public unsubscribe = new Subject();
   public navigate = Utils.navigate
-  constructor(public service: StateService, public route: Router) { }
+  constructor(
+    public service: StateService,
+    public route: Router,
+    public activeRouter: ActivatedRoute
+     ) { }
 
 
   ngOnInit(): void {
-
+      this.getParams()
   }
 
   createState(): void {
@@ -27,6 +31,29 @@ export class StateItemComponent implements OnInit, OnDestroy {
     ).subscribe(
       (response) => {
         this.navigate('state', this.route);
+      }
+    )
+  }
+  public getParams(): void {
+    this.activeRouter.params.pipe(
+      map(
+        (params: Params) => params["actions"]
+      )
+    ).subscribe(
+      (value) => {
+        if( value !== 'new') {
+          this.getId(Number(value))
+        }
+      }
+    )
+
+  }
+  getId(id: number): void {
+    this.service.getId(id).pipe(
+      takeUntil(this.unsubscribe)
+    ).subscribe(
+      (response) => {
+        this.state = response
       }
     )
   }

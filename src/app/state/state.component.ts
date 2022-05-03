@@ -32,10 +32,13 @@ export class StateComponent implements OnInit, OnDestroy {
       }
     )
   }
+  public Edit(id: number): void {
+    this.navigate(`state/${id}`, this.router)
+  }
   deleteState(id: number): void {
     this.service.deleteState(id).subscribe(
       (response) => {
-        this.navigate('state', this.router)
+        this.navigate('state/', this.router)
       }
     )
   }

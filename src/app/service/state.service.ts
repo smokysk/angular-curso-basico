@@ -1,3 +1,4 @@
+import { state } from "@angular/animations";
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { catchError, from, Observable } from "rxjs";
@@ -17,6 +18,18 @@ export class StateService {
   }
   public addState(state: State): Observable<State> {
     return this.http.post<State>(this.url, state).pipe(
+      catchError((ex) => from([]))
+    )
+  }
+  public getId(id: number): Observable<State> {
+    const fullUrl = `${this.url}${id}/`;
+    return this.http.get<State>(fullUrl).pipe(
+      catchError((ex) => from([]))
+    )
+  }
+  public updateState(state: State, id: number): Observable<State> {
+    const fullUrl = `${this.url}${id}/`;
+    return this.http.patch<State>(fullUrl, state).pipe(
       catchError((ex) => from([]))
     )
   }
