@@ -5,7 +5,7 @@ import { Zone } from "../models/zone";
 
 @Injectable({providedIn: 'root'})
 export class ZoneService {
-  public readonly url: string = "http://127.0.0.1:9000/nucleo/zone/";
+  public readonly url: string = "http://127.0.0.1:8000/nucleo/zone/";
   constructor(public http: HttpClient) {
     this.url
   }

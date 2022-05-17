@@ -6,7 +6,7 @@ import { State } from "../models/state";
 
 @Injectable({providedIn: 'root'})
 export class DistrictService {
-  public readonly url: string = "http://127.0.0.1:9000/nucleo/district/";
+  public readonly url: string = "http://127.0.0.1:8000/nucleo/district/";
   constructor(public http: HttpClient) {
     this.url
   }
